@@ -80,17 +80,24 @@ console.log(allCaps);
 // });
 
 let largeShirts = [];
-largeShirts = runners.filter(function(largeS) {
+//largeShirts = runners.filter(function(largeS) {
+//   return largeS.shirt_size == "L";
+//});
+largeShirts = runners.filter((largeS) => {
     return largeS.shirt_size == "L";
 });
 console.log(largeShirts);
 // WARREN NOTES: SO YOU HAVE TO MAKE UP A NEW THING AND PASS THAT INTO YOUR FUNCTION
-//THAT WAS CONFUSING BUT ONCE I MADE UP "largeS" IT WORKED.
+//THAT WAS CONFUSING BUT ONCE I MADE UP "largeS" IT WORKED. Try to do it with arrow function next.
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+ticketPriceTotal = runners.reduce((total, runner) => {
+    return total + runner.donation;
+}, 0);
 console.log(ticketPriceTotal);
+//I had to name the differnet objects in the runners array as RUNNER and then feed RUNNER.DONATION through to get a number.
 
 
 // ==== Challenge 5: Be Creative ====
