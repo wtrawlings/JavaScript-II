@@ -2,7 +2,8 @@
 
 // Scroll to the bottom of the list to use some advanced array methods to help the event director gather some information from the businesses.
 
-const runners = [{ "id": 1, "first_name": "Charmain", "last_name": "Seiler", "email": "cseiler0@wired.com", "shirt_size": "2XL", "company_name": "Divanoodle", "donation": 75 },
+const runners = [
+    { "id": 1, "first_name": "Charmain", "last_name": "Seiler", "email": "cseiler0@wired.com", "shirt_size": "2XL", "company_name": "Divanoodle", "donation": 75 },
     { "id": 2, "first_name": "Whitaker", "last_name": "Ierland", "email": "wierland1@angelfire.com", "shirt_size": "2XL", "company_name": "Wordtune", "donation": 148 },
     { "id": 3, "first_name": "Julieta", "last_name": "McCloid", "email": "jmccloid2@yahoo.com", "shirt_size": "S", "company_name": "Riffpedia", "donation": 171 },
     { "id": 4, "first_name": "Martynne", "last_name": "Paye", "email": "mpaye3@sciencedaily.com", "shirt_size": "XL", "company_name": "Wordware", "donation": 288 },
@@ -60,7 +61,8 @@ let fullName = [];
 // for (let i = 0; i < runners.length; i++) {
 //     fullName += [(runners[i].first_name) + " " + (runners[i].last_name) + ", "];
 // }
-runners.forEach(runners => fullName += [(runners.first_name) + " " + (runners.last_name) + ", "]);
+//runners.forEach(runners => fullName += [(runners.first_name) + " " + (runners.last_name) + ", "]);
+runners.forEach(runners => fullName += `${runners.first_name} ${runners.last_name},`);
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
@@ -69,7 +71,8 @@ let allCaps = [];
 // for (let i = 0; i < runners.length; i++) {
 //     allCaps += [(runners[i].first_name.toUpperCase()) + " " + (runners[i].last_name) + ", "];
 // }
-runners.map(runners => allCaps += [(runners.first_name.toUpperCase()) + " " + (runners.last_name) + ", "]);
+//runners.map(runners => allCaps += [(runners.first_name.toUpperCase()) + " " + (runners.last_name) + ", "]);
+runners.map(runners => allCaps += `${runners.first_name.toUpperCase()} ${runners.last_name},`);
 console.log(allCaps);
 
 // ==== Challenge 3: Use .filter() ====
@@ -83,16 +86,18 @@ let largeShirts = [];
 //largeShirts = runners.filter(function(largeS) {
 //   return largeS.shirt_size == "L";
 //});
-largeShirts = runners.filter((largeS) => {
-    return largeS.shirt_size == "L";
-});
-console.log(largeShirts);
+// largeShirts = runners.filter((largeS) => {
+//     return largeS.shirt_size == "L";
+// });
+// console.log(largeShirts);
 // WARREN NOTES: SO YOU HAVE TO MAKE UP A NEW THING AND PASS THAT INTO YOUR FUNCTION
 //THAT WAS CONFUSING BUT ONCE I MADE UP "largeS" IT WORKED. Try to do it with arrow function next.
+largeShirts = runners.filter((largeS) => largeS.shirt_size == "L");
+console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
+let ticketPriceTotal = 0;
 ticketPriceTotal = runners.reduce((total, runner) => {
     return total + runner.donation;
 }, 0);
@@ -103,8 +108,14 @@ console.log(ticketPriceTotal);
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: This is a filter problem. I want a list of people that donated more than 200 units
+//let highDonation = [];
+highDonation = runners.filter(bigMoney => bigMoney.donation >= 200);
+console.log(highDonation);
 
-// Problem 2
 
-// Problem 3
+// Problem 2: This is another Filter problem. Due to crowding, we need to send the runners out in two different starting times. Give me a list of all the even numbered id's.
+evenIdRunners = runners.filter(evenRunners => evenRunners.id % 2 === 0)
+console.log(evenIdRunners);
+
+// Problem 3:
