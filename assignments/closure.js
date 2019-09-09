@@ -26,6 +26,8 @@ const counter = () => {
     console.log(num2);
 };
 counter();
+counter();
+counter();
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
 // newCounter(); // 2
